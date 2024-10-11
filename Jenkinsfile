@@ -10,6 +10,7 @@ pipeline {
         ANSIBLE_INVENTORY_PATH = "/home/ec2-user/Ansible-dev/inv.yml"            // Path to the inventory file on the Ansible control machine
         GIT_BRANCH = 'main'
         GIT_URL = 'https://github.com/roberttemta/Ansible_Jenkins_Project_1.git'
+        ZIP_FILE_NAME = 'my-ansible-playbokks.zip'
     }
 
     stages {
@@ -42,13 +43,19 @@ pipeline {
                 }
             }
         }
-    }
-/*
-    post {
-        always {
-            // Post-build actions, e.g., archive logs, send notifications, etc.
-            echo "Ansible playbook execution completed."
+
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    /*
+                    sh """" ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH} -b """
+                    */
+                    
+                    sh """zip -r ${ZIP_FILE_NAME} . """
+                    
+                }
+            }
         }
     }
-    */
+    
 }

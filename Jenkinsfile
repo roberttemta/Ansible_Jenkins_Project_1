@@ -10,7 +10,12 @@ pipeline {
         ANSIBLE_INVENTORY_PATH = "/home/ec2-user/Ansible-dev/inv.yml"            // Path to the inventory file on the Ansible control machine
         GIT_BRANCH = 'main'
         GIT_URL = 'https://github.com/roberttemta/Ansible_Jenkins_Project_1.git'
-        ZIP_FILE_NAME = 'my-ansible-playbokks.zip'
+        ZIP_FILE_NAME = "playbooks_${BUILD_ID}.zip"
+        JFROG_CRED = 'jfrog_Crendentials'
+        ARTIFACTPATH = '/home/ec2-user/workspace/Ansible_Pipeline'
+        ARTIFACTORY_URL = 'http://ec2-3-94-62-104.compute-1.amazonaws.com:8081/artifactory'
+        REPO = 'Playbooks_1'
+        ARTIFACTTARGETPATH = "playbooks_${BUILD_ID}.zip"
     }
 
     stages {
@@ -56,6 +61,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Upload zip to Jfrog') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: "${JFROG_CRED}",
+                 usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
+                    script {
+                // Upload the artifact using curl
+                sh '''
+                    curl -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD \
+                         -T $ARTIFACTPATH \
+                         ${ARTIFACTORY_URL}/${REPO}/${ARTIFACTTARGETPATH}
+                '''
+                    }
+                 }
+            }
+    }
     }
     
 }

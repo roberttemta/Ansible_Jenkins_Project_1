@@ -1,1 +1,1 @@
-# curl -uadmin:AP2fATqDWmUp89oDwzMk86QKoVD -T <PATH_TO_FILE> "http://ec2-34-238-157-80.compute-1.amazonaws.com:8081/artifactory/Playbooks_1/<TARGET_FILE_PATH>"
+# Testing Jenkins and Ansible

@@ -44,7 +44,7 @@ pipeline {
             }
         }
 
-        stage('Run Ansible Playbook') {
+        stage('Package Artifact in zip file') {
             steps {
                 script {
                     /*

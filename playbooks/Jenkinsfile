@@ -1,6 +1,8 @@
 
 pipeline {
+
     agent { 
+        
         label 'ansible_master_node' // Label of the Ansible control machine in Jenkins
     }
 

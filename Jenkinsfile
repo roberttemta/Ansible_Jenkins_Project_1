@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         //ANSIBLE_PLAYBOOK_PATH = "/home/ec2-user/Ansible-dev/play.yml"  // This works hell // Path to the playbook on the Ansible control machine
-        ANSIBLE_PLAYBOOK_PATH = 'playbooks/remove_file.yml'  // Path to the playbook on Github 
+        ANSIBLE_PLAYBOOK_PATH = 'playbooks/play2.yml'  // Path to the playbook on Github 
         ANSIBLE_INVENTORY_PATH = "/home/ec2-user/Ansible-dev/inv.yml"            // Path to the inventory file on the Ansible control machine
         GIT_BRANCH = 'main'
         GIT_URL = 'https://github.com/roberttemta/Ansible_Jenkins_Project_1.git'
@@ -19,22 +19,25 @@ pipeline {
                 git branch: "${GIT_BRANCH}", url: "${GIT_URL}"
             }
         }
+
+        stage('Testing Ansible Playbook') {
+            steps {
+                script {
+                    
+                    sh """ ansible-playbook -i ${ANSIBLE_INVENTORY_PATH} ${ANSIBLE_PLAYBOOK_PATH} --syntax-check"""
+                    
+                }
+            }
+        }
         
         stage('Run Ansible Playbook') {
             steps {
                 script {
-                    // Make sure you are on the Ansible control machine (node)
-                    // Execute the Ansible playbook using shell commands
                     /*
-                    sh """
-                        ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH} -b
-                  
-                    """
+                    sh """" ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH} -b """
                     */
                     
-                    sh """
-                        ansible-playbook -i ${ANSIBLE_INVENTORY_PATH} ${ANSIBLE_PLAYBOOK_PATH}
-                    """
+                    sh """ ansible-playbook -i ${ANSIBLE_INVENTORY_PATH} ${ANSIBLE_PLAYBOOK_PATH} """
                     
                 }
             }

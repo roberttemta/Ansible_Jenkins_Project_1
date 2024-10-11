@@ -82,12 +82,12 @@ pipeline {
             steps {
                 script {
                     
-                    sh """
+                    sh '''
                     curl -u ${JFROG_USER}:${JFROG_PASSWORD} \
-                    -O ${JFROG_URL}/${JFROG_REPO}/${ARTIFACT_NAME}
-                    """
+                    -O ${JFROG_URL}/${JFROG_REPO}/my-playbooks_16.zip
+                    '''
                     // Unzipping the artifact
-                    sh "unzip -o ${ARTIFACT_NAME}"
+                    sh "unzip -o my-playbooks_16.zip "
                 }
             }
         }

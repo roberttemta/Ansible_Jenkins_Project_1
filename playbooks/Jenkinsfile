@@ -77,7 +77,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('Download and Unzip Artifact') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${JFROG_CRED}",
@@ -93,6 +93,7 @@ pipeline {
                }
            }
         }
+        */
     }
     
 }

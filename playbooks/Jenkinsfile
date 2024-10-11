@@ -10,9 +10,9 @@ pipeline {
         ANSIBLE_INVENTORY_PATH = "/home/ec2-user/Ansible-dev/inv.yml"            // Path to the inventory file on the Ansible control machine
         GIT_BRANCH = 'main'
         GIT_URL = 'https://github.com/roberttemta/Ansible_Jenkins_Project_1.git'
-        ARTIFACT_NAME = "playbooks_${BUILD_ID}.zip"
+        ARTIFACT_NAME = "my-playbooks_${BUILD_ID}.zip"
         JFROG_CRED = 'jfrog_Crendentials'
-        ARTIFACT_PATH = '/home/ec2-user/workspace/Ansible_Pipeline/playbooks/*.zip'
+        ARTIFACT_PATH = 'playbooks'
         ARTIFACTORY_URL = 'http://ec2-34-238-157-80.compute-1.amazonaws.com:8081/artifactory'
         REPO = 'Playbooks_1'
        

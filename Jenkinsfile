@@ -13,7 +13,7 @@ pipeline {
         ZIP_FILE_NAME = "playbooks_${BUILD_ID}.zip"
         JFROG_CRED = 'jfrog_Crendentials'
         ARTIFACTPATH = '/home/ec2-user/workspace/Ansible_Pipeline'
-        ARTIFACTORY_URL = 'http://ec2-3-94-62-104.compute-1.amazonaws.com:8081/artifactory'
+        ARTIFACTORY_URL = 'http://ec2-34-238-157-80.compute-1.amazonaws.com:8081/artifactory'
         REPO = 'Playbooks_1'
         ARTIFACTTARGETPATH = "playbooks_${BUILD_ID}.zip"
     }

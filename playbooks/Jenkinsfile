@@ -68,15 +68,30 @@ pipeline {
                  usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                     script {
                 // Upload the artifact using curl
-                sh """
+                sh ''''
                     curl -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD \
                          -T $ARTIFACT_NAME \
                          ${ARTIFACTORY_URL}/${REPO}/${ARTIFACT_NAME}
-                """
+                '''
                     }
                 }
             }
         }
+
+        stage('Download and Unzip Artifact') {
+            steps {
+                script {
+                    
+                    sh """
+                    curl -u ${JFROG_USER}:${JFROG_PASSWORD} \
+                    -O ${JFROG_URL}/${JFROG_REPO}/${ARTIFACT_NAME}
+                    """
+                    // Unzipping the artifact
+                    sh "unzip -o ${ARTIFACT_NAME}"
+                }
+            }
+        }
+    
     }
     
 }

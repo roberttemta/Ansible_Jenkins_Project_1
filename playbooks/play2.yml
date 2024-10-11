@@ -1,8 +1,6 @@
 ---
-- hosts: ws
+- hosts: all
   become: True
-  #become_user: root
-  ignore_errors: 1
   gather_facts: yes
 
   tasks: 

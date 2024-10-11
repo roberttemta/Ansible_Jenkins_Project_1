@@ -1,0 +1,24 @@
+
+---
+- name: Security pacthes
+  hosts: all
+  become: True
+  
+
+  tasks:
+    - name: Update package cache and upgrade security packages on Ubuntu
+      when: "'Ubuntu' in ansible_facts.os_family"
+      apt:
+        name: '*'
+        state: latest
+        update_cache: yes
+        only_upgrade: yes
+
+    - name: Update package cache and upgrade security packages on Amazon Linux
+      when: "'Amazon' in ansible_facts.os_family"
+      yum:
+        name: '*'
+        state: latest
+        security: yes
+        update_cache: yes
+   

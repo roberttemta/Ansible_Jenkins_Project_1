@@ -1,0 +1,13 @@
+---
+- hosts: ws
+  become: True
+  #become_user: root
+  ignore_errors: 1
+  gather_facts: yes
+
+  tasks: 
+    - name: Create a file
+      file:
+        path: /home/ec2-user/testing_playbookfile
+        mode: '0400'
+        state: absent

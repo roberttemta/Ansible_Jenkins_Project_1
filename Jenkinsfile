@@ -25,7 +25,7 @@ pipeline {
                     // Make sure you are on the Ansible control machine (node)
                     // Execute the Ansible playbook using shell commands
                     sh """
-                        ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH}
+                        ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH} -b
                   
                     """
                     /*

@@ -24,15 +24,17 @@ pipeline {
                 script {
                     // Make sure you are on the Ansible control machine (node)
                     // Execute the Ansible playbook using shell commands
+                    /*
                     sh """
                         ansible-playbook -i ${ANSIBLE_PLAYBOOK_PATH} -b
                   
                     """
-                    /*
+                    */
+                    
                     sh """
                         ansible-playbook -i ${ANSIBLE_INVENTORY_PATH} ${ANSIBLE_PLAYBOOK_PATH}
                     """
-                    */
+                    
                 }
             }
         }

@@ -2,7 +2,7 @@
 pipeline {
 
     agent { 
-        
+
         label 'ansible_master_node' // Label of the Ansible control machine in Jenkins
     }
 
@@ -70,7 +70,7 @@ pipeline {
                  usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                     script {
                 // Upload the artifact using curl
-                sh ''''
+                sh '''
                     curl -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD \
                          -T $ARTIFACT_NAME \
                          ${ARTIFACTORY_URL}/${REPO}/${ARTIFACT_NAME}

@@ -8,7 +8,7 @@ pipeline {
         ANSIBLE_PLAYBOOK_PATH = "/home/ec2-user/Ansible-dev/play.yml"  // Path to the playbook on the Ansible control machine
         //ANSIBLE_INVENTORY_PATH = "/home/ec2-user/Ansible-dev"            // Path to the inventory file on the Ansible control machine
         GIT_BRANCH = 'main'
-        GIT_URL = 'https://your-git-repo-url.git'
+        GIT_URL = 'https://github.com/roberttemta/Ansible_Jenkins_Project_1.git'
     }
 
     stages {

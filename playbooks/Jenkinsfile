@@ -82,7 +82,7 @@ pipeline {
 
         stage('Download and Unzip Artifact') {
             steps {
-                /*
+                
                 withCredentials([usernamePassword(credentialsId: "${JFROG_CRED}",
                  usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                     script {
@@ -93,7 +93,6 @@ pipeline {
                          ${ARTIFACTORY_URL}/${REPO}/my-playbooks_22.zip
 
                     '''
-                    */
                     
                     // Unzipping the artifact
                     sh ' unzip -o my-playbooks_22.zip '

@@ -2,6 +2,11 @@
 
 pipeline {
 
+    triggers {
+        // Schedule to run the job on the 1st day of every month at midnight (00:00)
+        cron('H 0 1 * *')
+    }
+
     agent { 
 
         label 'ansible_master_node' // Label of the Ansible control machine in Jenkins
